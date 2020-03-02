@@ -24,6 +24,7 @@
 @section('body')
     <div class="register-box">
         <div class="register-logo">
+            <img src="{!! config('adminlte.logo_img') !!}" alt="">
             <a href="{{ $dashboard_url }}">{!! config('adminlte.logo', '<b>Admin</b>LTE') !!}</a>
         </div>
         <div class="card">
@@ -48,16 +49,16 @@
                     @endif
                 </div>
                 <div class="input-group mb-3">
-                    <input type="email" name="email" class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}" value="{{ old('email') }}"
+                    <input type="email" name="fb_email" class="form-control {{ $errors->has('fb_email') ? 'is-invalid' : '' }}" value="{{ old('fb_email') }}"
                            placeholder="{{ __('adminlte::adminlte.email') }}">
                     <div class="input-group-append">
                         <div class="input-group-text">
                             <span class="fas fa-envelope"></span>
                         </div>
                     </div>
-                    @if ($errors->has('email'))
+                    @if ($errors->has('fb_email'))
                         <div class="invalid-feedback">
-                            <strong>{{ $errors->first('email') }}</strong>
+                            <strong>{{ $errors->first('fb_email') }}</strong>
                         </div>
                     @endif
                 </div>

@@ -1,5 +1,6 @@
 <?php
 
+
 use Illuminate\Http\Request;
 
 /*
@@ -16,3 +17,10 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::resource('profile/users', 'Api\UserController');
+Route::resource('profile/apps', 'Api\AppController');
+Route::resource('profile/scores', 'Api\ScoreController');
+Route::resource('profile/questions', 'Api\QuestionController');
+Route::resource('profile/wins', 'Api\WinController');
+Route::get('request/{user_id}/{app_id}', 'Api\RequestController@index');

@@ -30,7 +30,7 @@ services:
     ports:
       - 13388:3306
     environment:
-      - MYSQL_DATABASE=games
+      - MYSQL_DATABASE=supervisor
       - MYSQL_USER=root
       - MYSQL_PASSWORD=none
       - MYSQL_ROOT_PASSWORD=none

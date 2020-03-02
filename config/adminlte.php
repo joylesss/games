@@ -14,7 +14,7 @@ return [
     |
     */
 
-    'title' => '.: Manger User :.',
+    'title' => '.: Manager User :.',
     'title_prefix' => '',
     'title_postfix' => '',
 
@@ -30,7 +30,7 @@ return [
     |
     */
 
-    'logo' => '<b>Admin</b>LTE',
+    'logo' => '<b>Supervisor</b>',
     'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
     'logo_img_class' => 'brand-image-xl',
     'logo_img_xl' => null,
@@ -174,7 +174,7 @@ return [
 
     'menu' => [
         [
-            'text' => 'search',
+            'text' => 'Search',
             'search' => true,
             'topnav' => true,
         ],
@@ -183,13 +183,13 @@ return [
             'url'  => 'admin/blog',
             'can'  => 'manage-blog',
         ],
-        [
+        /*[
             'text'        => 'pages',
             'url'         => 'admin/pages',
             'icon'        => 'far fa-fw fa-file',
             'label'       => 4,
             'label_color' => 'success',
-        ],
+        ],*/
         ['header' => 'account_settings'],
         [
             'text' => 'profile',
@@ -201,7 +201,7 @@ return [
             'url'  => 'admin/settings',
             'icon' => 'fas fa-fw fa-lock',
         ],
-        [
+        /*[
             'text'    => 'multilevel',
             'icon'    => 'fas fa-fw fa-share',
             'submenu' => [
@@ -238,19 +238,45 @@ return [
                     'url'  => '#',
                 ],
             ],
-        ],
-        ['header' => 'labels'],
+        ],*/
+        ['header' => 'APPLICATION VIEWS'],
         [
-            'text'       => 'important',
-            'icon_color' => 'red',
-        ],
-        [
-            'text'       => 'warning',
-            'icon_color' => 'yellow',
+            'text'       => 'Users',
+            'icon' => 'fas fa-users',
+            'url'  => 'profile/users',
         ],
         [
-            'text'       => 'information',
-            'icon_color' => 'aqua',
+            'text'       => 'Apps',
+            'icon'       => 'fab fa-app-store',
+            'url'  => 'profile/apps',
+        ],
+        [
+            'text'       => 'Scores',
+            'icon' => 'fas fa-star-half-alt',
+            'url'  => 'profile/scores',
+        ],
+        [
+            'text'       => 'Questions',
+            'icon' => 'fas fa-question',
+            'submenu' => [
+                [
+                    'text' => 'Level one',
+                    'url'  => 'profile/questions/one',
+                ],
+                [
+                    'text' => 'Level two',
+                    'url'  => 'profile/questions/two',
+                ],
+                [
+                    'text' => 'Level three',
+                    'url'  => 'profile/questions/three',
+                ],
+            ]
+        ],
+        [
+            'text'       => 'Wins',
+            'icon' => 'fas fa-trophy',
+            'url'  => 'profile/wins',
         ],
     ],
 

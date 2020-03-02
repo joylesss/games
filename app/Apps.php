@@ -11,7 +11,7 @@ class Apps extends Model
 
     //
     protected $fillable = [
-        'id', 'name', 'birthday', 'version_ios', 'version_android', 'prize', 'plan_test'
+        'id', 'name', 'version_ios', 'version_android', 'prize', 'plan_test'
     ];
 
     //

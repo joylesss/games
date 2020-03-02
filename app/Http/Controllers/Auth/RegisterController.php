@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
-use App\User;
+use App\Users;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -51,7 +51,7 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'fb_email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
     }
@@ -60,14 +60,19 @@ class RegisterController extends Controller
      * Create a new user instance after a valid registration.
      *
      * @param  array  $data
-     * @return \App\User
+     * @return \App\Users
      */
     protected function create(array $data)
     {
-        return User::create([
+        return Users::create([
             'name' => $data['name'],
-            'email' => $data['email'],
+            'fb_email' => $data['fb_email'],
             'password' => Hash::make($data['password']),
+            /* Set default */
+            'phone' => '0368185093',
+            'role' => '1',
+            'fb_id' => '123456789987654322',
+            'fb_url' => '',
         ]);
     }
 }

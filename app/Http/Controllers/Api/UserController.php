@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Users;
 use App\Service\Api\UserService;
 
 class UserController extends Controller
@@ -13,6 +13,7 @@ class UserController extends Controller
     public function __construct(UserService $userService)
     {
         //
+        $this->userService = $userService;
     }
 
     /**
@@ -23,6 +24,7 @@ class UserController extends Controller
     public function index()
     {
         //
+        return $this->userService->index();
     }
 
     /**
@@ -49,12 +51,15 @@ class UserController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int  $user_id
+     * @param  int  $app_id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($user_id, $app_id)
     {
+        dd($app_id);
         //
+        return $this->userService->show($user_id, $app_id);
     }
 
     /**

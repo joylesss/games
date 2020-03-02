@@ -31,6 +31,7 @@
 @section('body')
     <div class="login-box">
         <div class="login-logo">
+            <img src="{!! config('adminlte.logo_img') !!}" alt="">
             <a href="{{ $dashboard_url }}">{!! config('adminlte.logo', '<b>Admin</b>LTE') !!}</a>
         </div>
         <div class="card">
@@ -39,15 +40,15 @@
                 <form action="{{ $login_url }}" method="post">
                     {{ csrf_field() }}
                     <div class="input-group mb-3">
-                        <input type="email" name="email" class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}" value="{{ old('email') }}" placeholder="{{ __('adminlte::adminlte.email') }}" autofocus>
+                        <input type="email" name="fb_email" class="form-control {{ $errors->has('fb_email') ? 'is-invalid' : '' }}" value="{{ old('fb_email') }}" placeholder="{{ __('adminlte::adminlte.email') }}" autofocus>
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-envelope"></span>
                             </div>
                         </div>
-                        @if ($errors->has('email'))
+                        @if ($errors->has('fb_email'))
                             <div class="invalid-feedback">
-                                {{ $errors->first('email') }}
+                                {{ $errors->first('fb_email') }}
                             </div>
                         @endif
                     </div>
@@ -64,19 +65,9 @@
                             </div>
                         @endif
                     </div>
-                    <div class="row">
-                        <div class="col-8">
-                            <div class="icheck-primary">
-                                <input type="checkbox" name="remember" id="remember">
-                                <label for="remember">{{ __('adminlte::adminlte.remember_me') }}</label>
-                            </div>
-                        </div>
-                        <div class="col-4">
-                            <button type="submit" class="btn btn-primary btn-block btn-flat">
-                                {{ __('adminlte::adminlte.sign_in') }}
-                            </button>
-                        </div>
-                    </div>
+                    <button type="submit" class="btn btn-primary btn-block btn-flat">
+                        {{ __('adminlte::adminlte.sign_in') }}
+                    </button>
                 </form>
                 <p class="mt-2 mb-1">
                     <a href="{{ $password_reset_url }}">

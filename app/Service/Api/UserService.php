@@ -2,9 +2,9 @@
 namespace App\Service\Api;
 
 use Illuminate\Http\Request;
-use App\User;
+use App\Users;
 
-class RequestService {
+class UserService {
 
     /**
      * Display a listing of the resource.
@@ -14,6 +14,10 @@ class RequestService {
     public function index()
     {
         //
+        return response()
+            ->json([
+                'model' => Users::DataTablePaginate()
+            ]);
     }
 
     /**
@@ -43,9 +47,10 @@ class RequestService {
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($user_id, $app_id)
     {
         //
+        dd($user_id);
     }
 
     /**
