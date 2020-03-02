@@ -19,12 +19,12 @@ use Illuminate\Support\Str;
 
 $factory->define(Users::class, function (Faker $faker) {
     return [
-        'name' => $faker->unique()->name,
-        'phone' => $faker->unique()->phoneNumber,
-        'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
-        'role' => 0,
-        'fb_id' => $faker->unique()->creditCardNumber,
-        'fb_email' => $faker->unique()->safeEmail,
-        'fb_url' => '',
+        'name'      => $faker->unique()->name,
+        'phone'     => $faker->unique()->phoneNumber,
+        'password'  => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+        'role'      => 0,
+        'fb_id'     => $faker->unique()->creditCardNumber,
+        'fb_email'  => $faker->unique()->safeEmail,
+        'fb_url'    => $faker->url,
     ];
 });

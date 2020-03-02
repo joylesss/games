@@ -20,11 +20,43 @@ class RequestController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($user_id, $app_id)
+    public function info_user($fb_id, $app_id)
     {
         //
-dd($user_id);
-        return $this->requestService->index($user_id);
+        return $this->respondSuccess($this->requestService->info_user($fb_id, $app_id));
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function info_question($app_id)
+    {
+        //
+        return $this->respondSuccess($this->requestService->info_question($app_id));
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function info_result($app_id)
+    {
+        //
+//        return $this->respondSuccess($this->requestService->info_question($app_id));
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function info_score($app_id)
+    {
+        //
+        return $this->respondSuccess($this->requestService->info_score($app_id));
     }
 
     /**

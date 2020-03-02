@@ -3,6 +3,7 @@
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
 use App\Apps;
+use App\Questions;
 use Faker\Generator as Faker;
 use Illuminate\Support\Str;
 
@@ -17,12 +18,14 @@ use Illuminate\Support\Str;
 |
 */
 
-$factory->define(Apps::class, function (Faker $faker) {
+$factory->define(Questions::class, function (Faker $faker) {
     return [
-        'name'              => $faker->unique()->name,
-        'version_ios'       => $faker->randomNumber(3),
-        'version_android'   => $faker->randomNumber(3),
-        'prize'             => $faker->text('20'),
-        'plan_test'         => $faker->text('50'),
+        'app_id'    => Apps::all()->random()->id,
+        'details'   => $faker->text('100'),
+        'a'         => $faker->text('20'),
+        'b'         => $faker->text('20'),
+        'c'         => $faker->text('20'),
+        'd'         => $faker->text('20'),
+        'answer'    => $faker->regexify('[a-d]{1}'),
     ];
 });

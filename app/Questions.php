@@ -5,7 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use App\Support\DataTablePaginate;
 
-class Requests extends Model
+class Questions extends Model
 {
     use DataTablePaginate;
 

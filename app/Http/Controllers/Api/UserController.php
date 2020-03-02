@@ -57,7 +57,6 @@ class UserController extends Controller
      */
     public function show($user_id, $app_id)
     {
-        dd($app_id);
         //
         return $this->userService->show($user_id, $app_id);
     }

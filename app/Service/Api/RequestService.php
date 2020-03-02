@@ -13,28 +13,27 @@ class RequestService {
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($user_id)
+    public function info_user($fb_id, $app_id)
     {
-        dd($user_id);
-        //
         return DB::table('users')
-            ->select('*')
-            ->where([
-                ['users.fb_id', '=', $user_id],
-            ])
-            ->join('scores', function($join) {
-                $join->on('users.id', '=', 'scores.user_id');
-            })
-            ->join('apps', function($join) {
+            ->select(
+                'apps.name as app_name',
+                'version_ios',
+                'version_android',
+                'wins.prize',
+                'wins.plan_test',
+                'scores.point'
+            )
+            ->leftJoin('wins','users.id', '=', 'wins.user_id')
+            ->leftJoin('scores','users.id', '=', 'scores.user_id')
+            ->leftJoin('apps', function($join) use($app_id) {
                 $join->on('apps.id', '=', 'scores.app_id')
-                    ->where('apps.id', '=', '234');
+                    ->where('apps.id', '=', $app_id);
             })
+            ->where([
+                ['users.fb_id', '=', $fb_id],
+            ])
             ->get()->toArray();
-        dd($request);
-        return response()
-            ->json([
-                'model' => Apps::DataTablePaginate()
-            ]);
     }
 
     /**
@@ -42,9 +41,46 @@ class RequestService {
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function info_question($app_id)
     {
         //
+        return DB::table('questions')
+            ->select('*')
+            ->where('app_id', '=', $app_id)
+            ->get();
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function info_score($app_id)
+    {
+        //
+        return DB::table('apps')
+            ->select(
+                'fb_id',
+                'users.name as user_name',
+                'apps.name as user_app',
+                'scores.point'
+            )
+            ->leftJoin('scores', 'apps.id', '=', 'scores.app_id')
+            ->leftJoin('users', 'scores.user_id', '=', 'users.id')
+            ->where('apps.id', '=', $app_id)
+            ->get();
+
+        return DB::table('users')
+            ->select(
+                'fb_id',
+                'users.name as user_name',
+                'apps.name as user_app',
+                'scores.point'
+            )
+            ->leftJoin('scores', 'users.id', '=', 'scores.user_id')
+            ->leftJoin('apps', 'scores.app_id', '=', 'apps.id')
+            ->where('app_id', '=', $app_id)
+            ->get();
     }
 
     /**
